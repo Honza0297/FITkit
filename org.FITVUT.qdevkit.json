@@ -1,0 +1,80 @@
+{
+    "app-id": "org.FITVUT.qdevkit",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "qdevkit",
+    "modules": [    
+       {
+            "name": "libssh",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "libssh-0.9.0.tar.xz"
+                }
+            ]
+        },    
+        {
+            "name": "fcmake",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "fcmake-current.tar.gz"
+                }
+            ]
+        },
+        {
+            "name": "libkitclient",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "libkitclient-current.tar.gz"
+                }
+            ]
+        },
+        {
+            "name": "fkflash",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "fkflash-current.tar.gz"
+                }
+            ]
+        },
+        {
+            "name": "pythonqt",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "pythonqt-current.tar.gz"
+                }
+            ]
+        },
+        {
+            "name": "qdevkit",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "qdevkit-current.tar.gz"
+                }
+            ]
+        },
+        {
+            "name": "qdevkit-plugins",
+            "buildsystem": "cmake",
+            
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "qdevkit-plugins-current.tar.gz"
+                }
+            ]
+        }
+    ]
+}
