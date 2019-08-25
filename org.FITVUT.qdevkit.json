@@ -7,14 +7,17 @@
     "modules": [    
        {
             "name": "libssh",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
             "sources": [
                 {
                     "type": "archive",
-                    "path": "libssh-0.9.0.tar.xz"
+                    "url": "https://www.libssh.org/files/0.9/libssh-0.9.0.tar.xz",
+                    "sha256": "25303c2995e663cd169fdd902bae88106f48242d7e96311d74f812023482c7a5"   
                 }
             ]
-        },    
+        },
+        "shared-modules/qt4/qt4-4.8.7-minimal.json",
         {
             "name": "fcmake",
             "buildsystem": "cmake",
@@ -25,9 +28,49 @@
                 }
             ]
         },
+         {
+            "name": "libusb",
+            "config-opts": [ "--disable-static", "--disable-udev" ],
+            "cleanup": [
+                "/lib/*.la",
+                "/lib/pkgconfig",
+                "/include"
+            ],
+
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libusb/libusb/releases/download/v1.0.22/libusb-1.0.22.tar.bz2",
+                    "sha256": "75aeb9d59a4fdb800d329a545c2e6799f732362193b465ea198f2aa275518157"  
+                }
+            ]
+        },
+        {
+            "name": "libftdi",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.3.tar.bz2",
+                    "sha256": "9a8c95c94bfbcf36584a0a58a6e2003d9b133213d9202b76aec76302ffaa81f4"  
+                }
+            ]
+        },
+         {
+            "name": "swig",
+            "config-opts": ["--without-boost", "--without-pcre"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz",
+                    "sha256": "06dc8816a225667ce1eee545af3caf87e1bbaa379c32838d4cea53152514348d"
+                }
+            ]
+        },
         {
             "name": "libkitclient",
             "buildsystem": "cmake",
+            "config-opts": ["-DCPACK_PACKAGING_INSTALL_PREFIX=/app"],
             "sources": [
                 {
                     "type": "archive",

@@ -1,0 +1,4 @@
+[Application]
+name=org.FITVUT.qdevkit
+runtime=org.freedesktop.Platform/x86_64/18.08
+sdk=org.freedesktop.Sdk/x86_64/18.08

@@ -1,0 +1,6 @@
+Name: libssh
+Description: The SSH Library
+Version: 0.9.0
+Libs: -L/app/lib -lssh
+Cflags: -I/app/include
+
