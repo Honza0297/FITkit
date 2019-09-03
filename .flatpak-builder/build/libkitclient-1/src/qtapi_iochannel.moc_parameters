@@ -1,0 +1,16 @@
+-I/app/include
+-I/app/include/QtCore
+-I/run/build/libkitclient
+-I/run/build/libkitclient
+-I/run/build/libkitclient/contrib
+-I/run/build/libkitclient/contrib/liburpc_copy
+-I/run/build/libkitclient/src
+-I/run/build/libkitclient/src
+-D__VERSION="0.9.11"
+-D$<$<NOT:$<CONFIG:Debug>>:QT_NO_DEBUG>
+-DQT_CORE_LIB
+-D__UNIX
+-DURPC_DO_EXPORT
+-o
+/run/build/libkitclient/src/qtapi_iochannel.moc
+/run/build/libkitclient/src/qtapi/qtapi_iochannel.h

@@ -1,0 +1,17 @@
+liburpc
+------------------
+
+liburpc is a set of APIs for transporting function calls
+over IP networks. It features a flexible RPC framework
+based on ASN.1 encoding, with type and byte-order checking.
+
+Installation
+------------
+mkdir build && cd build # Create build directory
+cmake ..                # Create Makefiles using CMake
+make
+sudo make install
+
+---
+Marek Vavrusa <marek@vavrusa.com>
+

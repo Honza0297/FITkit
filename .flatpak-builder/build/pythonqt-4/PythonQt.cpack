@@ -1,0 +1,99 @@
+# Package information
+set(CPACK_PACKAGE_NAME                 ${PROJECT_NAME_LC})
+set(CPACK_PACKAGE_VERSION              ${VERSION_STRING})
+set(CPACK_PACKAGE_DESCRIPTION          "Dynamic Python binding for the Qt framework.")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY  ${CPACK_PACKAGE_DESCRIPTION})
+
+# Package settings
+if(${UNIX})
+  set(CPACK_GENERATOR                    "DEB;RPM")
+  set(CPACK_CMAKE_GENERATOR              "Unix Makefiles")
+  set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION})
+endif(${UNIX})
+
+if(${WIN32})
+  set(CPACK_PACKAGE_NAME                 "pythonqt")
+  set(CPACK_GENERATOR                    "NSIS")
+  set(CPACK_CMAKE_GENERATOR              "MinGW Makefiles")
+  set(CPACK_PACKAGE_INSTALL_DIRECTORY    "PythonQt")
+  set(CPACK_PACKAGE_FILE_NAME            "${PROJECT_NAME}-${VERSION_STRING}-win32")
+  set(CPACK_NSIS_URL_INFO_ABOUT          "http://pythonqt.sourceforge.net/")
+  set(CPACK_NSIS_MODIFY_PATH             "ON")
+endif(${WIN32})
+
+set(CPACK_RESOURCE_FILE_LICENSE        ${CMAKE_SOURCE_DIR}/COPYING)
+
+# General
+set(REVISION                           5)
+
+# Debian
+if("${PACKAGE}" STREQUAL "Debian")
+
+   # Settings
+   set(CPACK_GENERATOR                    "DEB" PARENT_SCOPE)
+   set(CPACK_PACKAGE_VERSION              ${CPACK_PACKAGE_VERSION}-${REVISION} PARENT_SCOPE)
+
+   # Dependencies
+   set(CPACK_DEBIAN_PACKAGE_DEPENDS       "libqt4-core, libqtgui4, python2.5" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_BUILDS_DEPENDS      "cmake, libqt4-dev, python-dev" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_RECOMMENDS          "swig" PARENT_SCOPE)
+
+endif("${PACKAGE}" STREQUAL "Debian")
+
+# Ubuntu
+if("${PACKAGE}" STREQUAL "Ubuntu")
+
+   # Settings
+   set(CPACK_GENERATOR                    "DEB" PARENT_SCOPE)
+   set(CPACK_PACKAGE_VERSION              ${CPACK_PACKAGE_VERSION}-${REVISION}ubuntu PARENT_SCOPE)
+   set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}ubuntu PARENT_SCOPE)
+
+   # Dependencies
+   set(CPACK_DEBIAN_PACKAGE_DEPENDS       "libqt4-core, libqt4-gui, python2.5" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_BUILDS_DEPENDS      "cmake, libqt4-dev, python-dev" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_RECOMMENDS          "swig" PARENT_SCOPE)
+
+endif("${PACKAGE}" STREQUAL "Ubuntu")
+
+# SuSE
+if("${PACKAGE}" STREQUAL "Suse")
+
+   # Settings
+   set(CPACK_GENERATOR                    "RPM" PARENT_SCOPE)
+   set(CPACK_PACKAGE_VERSION              ${CPACK_PACKAGE_VERSION} PARENT_SCOPE)
+   set(CPACK_RPM_PACKAGE_RELEASE          ${REVISION} PARENT_SCOPE)
+   set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION} PARENT_SCOPE)
+
+   # Dependencies
+   set(CPACK_RPM_PACKAGE_DEPENDS          "libqt4, libqt4-x11, python" PARENT_SCOPE)
+
+endif("${PACKAGE}" STREQUAL "Suse")
+
+# Fedora
+if("${PACKAGE}" STREQUAL Fedora)
+   # Get Fedora release number
+   file(READ /etc/fedora-release FEDORA_RELEASE)
+   string(REPLACE " " ";" FEDORA_RELEASE "${FEDORA_RELEASE}")
+   list(GET FEDORA_RELEASE 2 FEDORA_RELEASE_NUMBER)
+
+   # Settings
+   set(CPACK_GENERATOR                    "RPM")
+   set(CPACK_RPM_PACKAGE_RELEASE          ${REVISION}.fc${FEDORA_RELEASE_NUMBER})
+   set(CPACK_RPM_PACKAGE_GROUP            "System Environment/Libraries")
+   set(CPACK_RPM_PACKAGE_LICENSE          "LGPLv2+")
+   set(CPACK_RPM_PACKAGE_VENDOR           "Faculty of Information Technology BUT")
+   set(CPACK_RPM_PACKAGE_URL              "http://pythonqt.sourceforge.net")
+   set(CPACK_RPM_PACKAGE_DESCRIPTION      " ")
+   set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_RPM_PACKAGE_RELEASE}.${CMAKE_SYSTEM_PROCESSOR})
+
+   # Directories excluded from the auto-generated list of paths
+   set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST
+      /usr
+      /usr/include
+      /usr/lib64)
+
+endif("${PACKAGE}" STREQUAL Fedora)
+
+include(CPack)
+
+

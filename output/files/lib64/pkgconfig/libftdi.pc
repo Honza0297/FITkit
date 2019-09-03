@@ -1,0 +1,12 @@
+prefix=/app
+exec_prefix=/app/bin
+libdir=/app/lib64
+includedir=/app/include/libftdi
+
+Name: libftdi
+Description: Library to program and control the FTDI USB controller
+Requires:
+Version: 
+Libs: -L${libdir} -lftdi -lusb
+Cflags: -I${includedir}
+

@@ -40,23 +40,11 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/libusb/libusb/releases/download/v1.0.22/libusb-1.0.22.tar.bz2",
-                    "sha256": "75aeb9d59a4fdb800d329a545c2e6799f732362193b465ea198f2aa275518157"  
+                    "path": "libusb-0.1.12.tar.gz"
                 }
             ]
         },
-        {
-            "name": "libftdi",
-            "buildsystem": "cmake",
-            "sources": [
                 {
-                    "type": "archive",
-                    "url": "http://www.intra2net.com/en/developer/libftdi/download/libftdi1-1.3.tar.bz2",
-                    "sha256": "9a8c95c94bfbcf36584a0a58a6e2003d9b133213d9202b76aec76302ffaa81f4"  
-                }
-            ]
-        },
-         {
             "name": "swig",
             "config-opts": ["--without-boost", "--without-pcre"],
             "sources": [
@@ -68,9 +56,24 @@
             ]
         },
         {
+            "name": "libftdi",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "path": "libftdi-0.20.tar.gz"  
+                }
+            ]
+        },
+        {
             "name": "libkitclient",
             "buildsystem": "cmake",
-            "config-opts": ["-DCPACK_PACKAGING_INSTALL_PREFIX=/app"],
+            "config-opts": ["-DCPACK_PACKAGING_INSTALL_PREFIX=/app -DPREFIX=/app"],
+            "build-options": {
+                            "env": {
+                            "CXXFLAGS": "-pthread"
+                            }
+            },
             "sources": [
                 {
                     "type": "archive",
@@ -78,6 +81,56 @@
                 }
             ]
         },
+        {
+        "name": "python-2.5",
+        "sources": [
+            {
+                "type": "archive",
+                "url": "https://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2",
+                "sha256": "584fce420e39218312c86b6abb242a14b1b0c1d215e2667b0f491893e41cc236"
+            }
+        ],
+        "config-opts": [
+            "--enable-shared",
+            "--with-ensurepip=yes",
+            "--with-system-expat",
+            "--with-system-ffi",
+            "--enable-loadable-sqlite-extensions",
+            "--with-dbmliborder=gdbm",
+            "--enable-unicode=ucs4"
+        ],
+        "post-install": [
+            /* Theres seem to be a permissions missmatch that causes the debug stripping to fail */
+            "chmod 644 $FLATPAK_DEST/lib/libpython2.5.so.1.0"
+        ],
+        "cleanup": [
+            "/bin/2to3*",
+            "/bin/easy_install*",
+            "/bin/idle*",
+            "/bin/pyvenv*",
+            "/bin/pydoc*",
+            "/include",
+            "/share",
+
+            /* Test scripts */
+            "/lib/python*/test",
+            "/lib/python*/*/test",
+            "/lib/python*/*/tests",
+            "/lib/python*/lib-tk/test",
+            "/lib/python*/lib-dynload/_*_test.*.so",
+            "/lib/python*/lib-dynload/_test*.*.so",
+
+            /* Unused modules */
+            "/lib/python*/idlelib",
+            "/lib/python*/tkinter*",
+            "/lib/python*/turtle*",
+            "/lib/python*/lib2to3*",
+            
+            /* Static library */
+            "/lib/python2.5/config/libpython2.5.a"
+        ]
+    },
+
         {
             "name": "fkflash",
             "buildsystem": "cmake",

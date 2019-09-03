@@ -1,0 +1,68 @@
+# Package settings
+if(${UNIX})
+  set(CPACK_GENERATOR                    "DEB;RPM")
+  set(CPACK_CMAKE_GENERATOR              "Unix Makefiles")
+  set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION})
+endif(${UNIX})
+
+if(${WIN32})
+  set(CPACK_PACKAGE_NAME                 "pythonqt")
+  set(CPACK_GENERATOR                    "NSIS")
+  set(CPACK_CMAKE_GENERATOR              "MinGW Makefiles")
+  set(CPACK_PACKAGE_INSTALL_DIRECTORY    "PythonQt")
+  set(CPACK_PACKAGE_FILE_NAME            "${PROJECT_NAME}-${VERSION_STRING}-win32")
+  set(CPACK_NSIS_URL_INFO_ABOUT          "http://pythonqt.sourceforge.net/")
+  set(CPACK_NSIS_MODIFY_PATH             "ON")
+endif(${WIN32})
+
+set(CPACK_RESOURCE_FILE_LICENSE        ${CMAKE_SOURCE_DIR}/COPYING)
+
+# General
+set(REVISION                           5)
+
+# Debian
+if("${PACKAGE}" STREQUAL "Debian")
+
+   # Settings
+   set(CPACK_GENERATOR                    "DEB" PARENT_SCOPE)
+   set(CPACK_PACKAGE_VERSION              ${CPACK_PACKAGE_VERSION}-${REVISION} PARENT_SCOPE)
+
+   # Dependencies
+   set(CPACK_DEBIAN_PACKAGE_DEPENDS       "libqt4-core, libqtgui4, python2.5" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_BUILDS_DEPENDS      "cmake, libqt4-dev, python-dev" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_RECOMMENDS          "swig" PARENT_SCOPE)
+
+endif("${PACKAGE}" STREQUAL "Debian")
+
+# Ubuntu
+if("${PACKAGE}" STREQUAL "Ubuntu")
+
+   # Settings
+   set(CPACK_GENERATOR                    "DEB" PARENT_SCOPE)
+   set(CPACK_PACKAGE_VERSION              ${CPACK_PACKAGE_VERSION}-${REVISION}ubuntu PARENT_SCOPE)
+   set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}ubuntu PARENT_SCOPE)
+
+   # Dependencies
+   set(CPACK_DEBIAN_PACKAGE_DEPENDS       "libqt4-core, libqt4-gui, python2.5" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_BUILDS_DEPENDS      "cmake, libqt4-dev, python-dev" PARENT_SCOPE)
+   set(DEBIAN_PACKAGE_RECOMMENDS          "swig" PARENT_SCOPE)
+
+endif("${PACKAGE}" STREQUAL "Ubuntu")
+
+# SuSE
+if("${PACKAGE}" STREQUAL "Suse")
+
+   # Settings
+   set(CPACK_GENERATOR                    "RPM" PARENT_SCOPE)
+   set(CPACK_PACKAGE_VERSION              ${CPACK_PACKAGE_VERSION} PARENT_SCOPE)
+   set(CPACK_RPM_PACKAGE_RELEASE          ${REVISION} PARENT_SCOPE)
+   set(CPACK_PACKAGE_FILE_NAME            ${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION} PARENT_SCOPE)
+
+   # Dependencies
+   set(CPACK_RPM_PACKAGE_DEPENDS          "libqt4, libqt4-x11, python" PARENT_SCOPE)
+
+endif("${PACKAGE}" STREQUAL "Suse")
+
+include(CPack)
+
+
