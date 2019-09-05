@@ -1,0 +1,173 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'qdevkit.h'
+**
+** Created by: The Qt Meta Object Compiler version 63 (Qt 4.8.7)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "qdevkit.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'qdevkit.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.7. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_QDevKit[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+      13,   14, // methods
+       2,   79, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+       9,    8,    8,    8, 0x05,
+      28,    8,    8,    8, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      43,    8,    8,    8, 0x0a,
+      72,   65,   60,    8, 0x0a,
+      84,    8,   60,    8, 0x2a,
+      92,    8,    8,    8, 0x08,
+
+ // methods: signature, parameters, type, tag, flags
+      99,    8,    8,    8, 0x02,
+     106,    8,    8,    8, 0x02,
+     136,  128,  119,    8, 0x02,
+     172,  168,  119,    8, 0x22,
+     205,  195,    8,    8, 0x02,
+     240,    8,    8,    8, 0x02,
+     279,  269,  261,    8, 0x02,
+
+ // properties: name, type, flags
+     305,  261, 0x0a095001,
+     328,  316, 0x0b095001,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QDevKit[] = {
+    "QDevKit\0\0settingsReloaded()\0aboutToClose()\0"
+    "reloadSettings()\0bool\0silent\0close(bool)\0"
+    "close()\0init()\0args()\0localePath()\0"
+    "QVariant\0key,def\0settingsValue(QString,QVariant)\0"
+    "key\0settingsValue(QString)\0key,value\0"
+    "setSettingsValue(QString,QVariant)\0"
+    "refreshApplication()\0QString\0file,mode\0"
+    "absolutePath(QString,int)\0localePath\0"
+    "QStringList\0args\0"
+};
+
+void QDevKit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QDevKit *_t = static_cast<QDevKit *>(_o);
+        switch (_id) {
+        case 0: _t->settingsReloaded(); break;
+        case 1: _t->aboutToClose(); break;
+        case 2: _t->reloadSettings(); break;
+        case 3: { bool _r = _t->close((*reinterpret_cast< bool(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 4: { bool _r = _t->close();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
+        case 5: _t->init(); break;
+        case 6: _t->args(); break;
+        case 7: _t->localePath(); break;
+        case 8: { QVariant _r = _t->settingsValue((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< QVariant(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< QVariant*>(_a[0]) = _r; }  break;
+        case 9: { QVariant _r = _t->settingsValue((*reinterpret_cast< const QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QVariant*>(_a[0]) = _r; }  break;
+        case 10: _t->setSettingsValue((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< QVariant(*)>(_a[2]))); break;
+        case 11: _t->refreshApplication(); break;
+        case 12: { QString _r = _t->absolutePath((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QDevKit::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QDevKit::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_QDevKit,
+      qt_meta_data_QDevKit, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QDevKit::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QDevKit::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QDevKit::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QDevKit))
+        return static_cast<void*>(const_cast< QDevKit*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int QDevKit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 13)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 13;
+    }
+#ifndef QT_NO_PROPERTIES
+      else if (_c == QMetaObject::ReadProperty) {
+        void *_v = _a[0];
+        switch (_id) {
+        case 0: *reinterpret_cast< QString*>(_v) = localePath(); break;
+        case 1: *reinterpret_cast< QStringList*>(_v) = args(); break;
+        }
+        _id -= 2;
+    } else if (_c == QMetaObject::WriteProperty) {
+        _id -= 2;
+    } else if (_c == QMetaObject::ResetProperty) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyDesignable) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyScriptable) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyStored) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyEditable) {
+        _id -= 2;
+    } else if (_c == QMetaObject::QueryPropertyUser) {
+        _id -= 2;
+    }
+#endif // QT_NO_PROPERTIES
+    return _id;
+}
+
+// SIGNAL 0
+void QDevKit::settingsReloaded()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void QDevKit::aboutToClose()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
+}
+QT_END_MOC_NAMESPACE

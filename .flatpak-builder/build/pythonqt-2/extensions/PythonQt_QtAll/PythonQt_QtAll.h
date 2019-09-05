@@ -36,14 +36,11 @@
 #ifdef WIN32
 #ifdef PYTHONQT_QTALL_EXPORTS
 #define PYTHONQT_QTALL_EXPORT __declspec(dllexport)
-#pragma message ( "PYTHONQT_QTALL_EXPORT flag: __declspec(dllexport)" )
 #else
 #define PYTHONQT_QTALL_EXPORT __declspec(dllimport)
-#pragma message ( "PYTHONQT_QTALL_EXPORT flag: __declspec(dllimport)" )
 #endif
 #else
 #define PYTHONQT_QTALL_EXPORT
-#pragma message ( "PYTHONQT_QTALL_EXPORT flag: <empty>" )
 #endif
 
 namespace PythonQt_QtAll

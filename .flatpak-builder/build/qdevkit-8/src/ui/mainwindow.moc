@@ -1,0 +1,184 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'mainwindow.h'
+**
+** Created by: The Qt Meta Object Compiler version 63 (Qt 4.8.7)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "mainwindow.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'mainwindow.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.7. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_MainWindow[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+      27,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      12,   11,   11,   11, 0x0a,
+      24,   11,   11,   11, 0x0a,
+      39,   11,   11,   11, 0x0a,
+      64,   55,   11,   11, 0x0a,
+      83,   11,   11,   11, 0x2a,
+      99,   11,   11,   11, 0x0a,
+     111,   11,   11,   11, 0x08,
+
+ // methods: signature, parameters, type, tag, flags
+     144,   11,  128,   11, 0x02,
+     163,   11,  151,   11, 0x02,
+     190,   11,  176,   11, 0x02,
+     209,   11,  200,   11, 0x02,
+     234,   11,  219,   11, 0x02,
+     256,  244,   11,   11, 0x02,
+     306,  299,   11,   11, 0x02,
+     351,  339,  335,   11, 0x02,
+     378,  339,  335,   11, 0x02,
+     408,  339,  335,   11, 0x02,
+     442,  339,  335,   11, 0x02,
+     487,  475,   11,   11, 0x02,
+     515,  511,   11,   11, 0x22,
+     560,  543,  535,   11, 0x02,
+     612,  601,  535,   11, 0x22,
+     651,  645,  535,   11, 0x22,
+     676,   11,  535,   11, 0x22,
+     694,   11,  535,   11, 0x02,
+     723,  715,  535,   11, 0x02,
+     739,   11,  535,   11, 0x22,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_MainWindow[] = {
+    "MainWindow\0\0showAbout()\0showSettings()\0"
+    "showAddRemote()\0deviceId\0showDeviceDlg(int)\0"
+    "showDeviceDlg()\0updateSVN()\0"
+    "setCentralPage()\0ConnectionTabs*\0"
+    "tabs()\0DeviceTree*\0deviceTree()\0"
+    "FkTreeWidget*\0appTree()\0ToolBar*\0"
+    "toolBar()\0TunnelService*\0tunnels()\0"
+    "area,widget\0addToDock(Qt::DockWidgetArea,QDockWidget*)\0"
+    "widget\0removeFromDock(QDockWidget*)\0"
+    "int\0caption,msg\0showError(QString,QString)\0"
+    "showQuestion(QString,QString)\0"
+    "showInfoQuestion(QString,QString)\0"
+    "showInformation(QString,QString)\0"
+    "msg,timeout\0showStatus(QString,int)\0"
+    "msg\0showStatus(QString)\0QString\0"
+    "login,host,label\0"
+    "requestPassword(QString,QString,QString)\0"
+    "login,host\0requestPassword(QString,QString)\0"
+    "login\0requestPassword(QString)\0"
+    "requestPassword()\0applicationVersion()\0"
+    "runtime\0qtVersion(bool)\0qtVersion()\0"
+};
+
+void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        MainWindow *_t = static_cast<MainWindow *>(_o);
+        switch (_id) {
+        case 0: _t->showAbout(); break;
+        case 1: _t->showSettings(); break;
+        case 2: _t->showAddRemote(); break;
+        case 3: _t->showDeviceDlg((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->showDeviceDlg(); break;
+        case 5: _t->updateSVN(); break;
+        case 6: _t->setCentralPage(); break;
+        case 7: { ConnectionTabs* _r = _t->tabs();
+            if (_a[0]) *reinterpret_cast< ConnectionTabs**>(_a[0]) = _r; }  break;
+        case 8: { DeviceTree* _r = _t->deviceTree();
+            if (_a[0]) *reinterpret_cast< DeviceTree**>(_a[0]) = _r; }  break;
+        case 9: { FkTreeWidget* _r = _t->appTree();
+            if (_a[0]) *reinterpret_cast< FkTreeWidget**>(_a[0]) = _r; }  break;
+        case 10: { ToolBar* _r = _t->toolBar();
+            if (_a[0]) *reinterpret_cast< ToolBar**>(_a[0]) = _r; }  break;
+        case 11: { TunnelService* _r = _t->tunnels();
+            if (_a[0]) *reinterpret_cast< TunnelService**>(_a[0]) = _r; }  break;
+        case 12: _t->addToDock((*reinterpret_cast< Qt::DockWidgetArea(*)>(_a[1])),(*reinterpret_cast< QDockWidget*(*)>(_a[2]))); break;
+        case 13: _t->removeFromDock((*reinterpret_cast< QDockWidget*(*)>(_a[1]))); break;
+        case 14: { int _r = _t->showError((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
+        case 15: { int _r = _t->showQuestion((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
+        case 16: { int _r = _t->showInfoQuestion((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
+        case 17: { int _r = _t->showInformation((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
+        case 18: _t->showStatus((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 19: _t->showStatus((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 20: { QString _r = _t->requestPassword((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QString(*)>(_a[3])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 21: { QString _r = _t->requestPassword((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 22: { QString _r = _t->requestPassword((*reinterpret_cast< QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 23: { QString _r = _t->requestPassword();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 24: { QString _r = _t->applicationVersion();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 25: { QString _r = _t->qtVersion((*reinterpret_cast< bool(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        case 26: { QString _r = _t->qtVersion();
+            if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData MainWindow::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject MainWindow::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow,
+      qt_meta_data_MainWindow, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &MainWindow::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *MainWindow::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *MainWindow::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_MainWindow))
+        return static_cast<void*>(const_cast< MainWindow*>(this));
+    if (!strcmp(_clname, "Component"))
+        return static_cast< Component*>(const_cast< MainWindow*>(this));
+    return QMainWindow::qt_metacast(_clname);
+}
+
+int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 27)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 27;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE

@@ -34,10 +34,16 @@ find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_PATH})
 
 # Find PythonQt
-find_package(PythonQt REQUIRED)
-include_directories(${LIBPYTHONQT_INCLUDE_PATH})
+set(PYTHONQT_LIBRARIES "/app/lib/libPythonQt.so")
+set(PYTHONQT_INCLUDE_PATH "/app/include;/app/include/PythonQt")
+
+# Find libftdi
+set(FTDI_LIBRARIES "/app/lib64/libftdi.so;/app/lib64/libftdi.so.1")
+set(FTDI_INCLUDE_PATH "/app/include")
 
 # Includes overview
+message(STATUS "libftdi libraries: ${FTDI_LIBRARIES}")
+message(STATUS "libftdi include dir: ${FTDI_INCLUDE_PATH}")
 message(STATUS "libkitclient libraries: ${LIBKITCLIENT_LIBRARIES}")
 message(STATUS "libkitclient include dir: ${LIBKITCLIENT_INCLUDE_PATH}")
 message(STATUS "pythonqt libraries: ${PYTHONQT_LIBRARIES}")
@@ -177,6 +183,8 @@ target_link_libraries(
     ${PROJECT_NAME}core
     ${PROJECT_NAME}ui 
     ${QT_LIBRARIES}
+    ${FTDI_LIBRARIES}
+    ${PYTHONQT_LIBRARIES}
     )
     
 # Installation

@@ -1,1 +1,0 @@
-/usr/bin/c++  -pthread -O3 -DNDEBUG  -L/app/lib -Wl,-z,relro,-z,now -Wl,--as-needed -rdynamic CMakeFiles/example.dir/example.cpp.o  -o example -Wl,-rpath,/app/lib64 ../src/libkitclient_static.a /app/lib64/libftdi.so -lQtCore -lrt 

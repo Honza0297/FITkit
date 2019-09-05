@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "qdevkit.moc"
+  "scriptengine.moc"
+  "qdevicemgr.moc"
+  "trayicon.moc"
+  "pluginmgr.moc"
+  "pluginloader.moc"
+  "pluginbase.moc"
+  "pluginscripted.moc"
+  "pluginbinary.moc"
+  "jobscheduler.moc"
+  "job.moc"
+  "tunnel.moc"
+  "buildserver.moc"
+  "qrc_icons.cxx"
+  "qdevkit_cs.qm"
+  "CMakeFiles/qdevkitcore.dir/qdevkit.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/scriptengine.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/script.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/qdevicemgr.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/trayicon.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/pluginmgr.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/pluginloader.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/pluginbase.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/pluginscripted.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/pluginbinary.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/component.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/components.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/jobscheduler.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/job.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/tunnel.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/buildserver.cpp.o"
+  "CMakeFiles/qdevkitcore.dir/qrc_icons.cxx.o"
+  "libqdevkitcore.pdb"
+  "libqdevkitcore.so"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/qdevkitcore.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin type='binary'>
+   <name>PythonQt console</name>
+   <icon>console.png</icon>
+   <comment>Provides interactive console for PythonQt.</comment>
+   <author>Zdeněk Vašíček</author>
+   <email>vasicek@fit.vutbr.cz</email>
+   <version>0.1</version>
+   <license>GNU/GPL</license>
+   <library>libpythonqtconsole</library>
+</plugin>

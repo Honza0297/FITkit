@@ -82,56 +82,6 @@
             ]
         },
         {
-        "name": "python-2.5",
-        "sources": [
-            {
-                "type": "archive",
-                "url": "https://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2",
-                "sha256": "584fce420e39218312c86b6abb242a14b1b0c1d215e2667b0f491893e41cc236"
-            }
-        ],
-        "config-opts": [
-            "--enable-shared",
-            "--with-ensurepip=yes",
-            "--with-system-expat",
-            "--with-system-ffi",
-            "--enable-loadable-sqlite-extensions",
-            "--with-dbmliborder=gdbm",
-            "--enable-unicode=ucs4"
-        ],
-        "post-install": [
-            /* Theres seem to be a permissions missmatch that causes the debug stripping to fail */
-            "chmod 644 $FLATPAK_DEST/lib/libpython2.5.so.1.0"
-        ],
-        "cleanup": [
-            "/bin/2to3*",
-            "/bin/easy_install*",
-            "/bin/idle*",
-            "/bin/pyvenv*",
-            "/bin/pydoc*",
-            "/include",
-            "/share",
-
-            /* Test scripts */
-            "/lib/python*/test",
-            "/lib/python*/*/test",
-            "/lib/python*/*/tests",
-            "/lib/python*/lib-tk/test",
-            "/lib/python*/lib-dynload/_*_test.*.so",
-            "/lib/python*/lib-dynload/_test*.*.so",
-
-            /* Unused modules */
-            "/lib/python*/idlelib",
-            "/lib/python*/tkinter*",
-            "/lib/python*/turtle*",
-            "/lib/python*/lib2to3*",
-            
-            /* Static library */
-            "/lib/python2.5/config/libpython2.5.a"
-        ]
-    },
-
-        {
             "name": "fkflash",
             "buildsystem": "cmake",
             "sources": [
@@ -144,10 +94,11 @@
         {
             "name": "pythonqt",
             "buildsystem": "cmake",
+            "config-opts": ["-DLIB_INSTALL_DIR:PATH=%{_libdir}"],
             "sources": [
                 {
                     "type": "archive",
-                    "path": "pythonqt-current.tar.gz"
+                    "path": "PythonQt3.zip"
                 }
             ]
         },

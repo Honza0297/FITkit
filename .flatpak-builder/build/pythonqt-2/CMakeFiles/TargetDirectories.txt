@@ -1,0 +1,7 @@
+/run/build/pythonqt/CMakeFiles/install/strip.dir
+/run/build/pythonqt/CMakeFiles/edit_cache.dir
+/run/build/pythonqt/CMakeFiles/PythonQt.dir
+/run/build/pythonqt/CMakeFiles/rebuild_cache.dir
+/run/build/pythonqt/CMakeFiles/list_install_components.dir
+/run/build/pythonqt/CMakeFiles/install/local.dir
+/run/build/pythonqt/CMakeFiles/install.dir

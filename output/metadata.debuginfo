@@ -1,0 +1,5 @@
+[Runtime]
+name=org.FITVUT.qdevkit.Debug
+
+[ExtensionOf]
+ref=app/org.FITVUT.qdevkit/x86_64/master

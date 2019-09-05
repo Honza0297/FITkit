@@ -1,0 +1,105 @@
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /run/build/qdevkit/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3ff3b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3ff3b.dir/build.make CMakeFiles/cmTC_3ff3b.dir/build
+make[1]: Entering directory '/run/build/qdevkit/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3ff3b.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -I/app/include  -march=x86-64 -mtune=generic -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection    -o CMakeFiles/cmTC_3ff3b.dir/CheckSymbolExists.cxx.o -c /run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^~~~~~~~
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: note: suggested alternative: ‘Q_WS_X11’
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^~~~~~~~
+                   Q_WS_X11
+make[1]: *** [CMakeFiles/cmTC_3ff3b.dir/build.make:66: CMakeFiles/cmTC_3ff3b.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/run/build/qdevkit/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_3ff3b/fast] Error 2
+
+File /run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /run/build/qdevkit/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f6f96/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f6f96.dir/build.make CMakeFiles/cmTC_f6f96.dir/build
+make[1]: Entering directory '/run/build/qdevkit/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f6f96.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -I/app/include  -march=x86-64 -mtune=generic -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection    -o CMakeFiles/cmTC_f6f96.dir/CheckSymbolExists.cxx.o -c /run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^~~~~~~~
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: note: suggested alternative: ‘Q_WS_X11’
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^~~~~~~~
+                   Q_WS_X11
+make[1]: *** [CMakeFiles/cmTC_f6f96.dir/build.make:66: CMakeFiles/cmTC_f6f96.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/run/build/qdevkit/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_f6f96/fast] Error 2
+
+File /run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /run/build/qdevkit/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a567d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a567d.dir/build.make CMakeFiles/cmTC_a567d.dir/build
+make[1]: Entering directory '/run/build/qdevkit/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a567d.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -I/app/include  -march=x86-64 -mtune=generic -O2 -g -pipe -Wp,-D_FORTIFY_SOURCE=2 -Wp,-D_GLIBCXX_ASSERTIONS -fexceptions -fstack-protector-strong -grecord-gcc-switches -fasynchronous-unwind-tables -fstack-clash-protection -fcf-protection    -o CMakeFiles/cmTC_a567d.dir/CheckSymbolExists.cxx.o -c /run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^~~~~~~~
+/run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: note: suggested alternative: ‘Q_WS_X11’
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^~~~~~~~
+                   Q_WS_X11
+make[1]: *** [CMakeFiles/cmTC_a567d.dir/build.make:66: CMakeFiles/cmTC_a567d.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/run/build/qdevkit/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_a567d/fast] Error 2
+
+File /run/build/qdevkit/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

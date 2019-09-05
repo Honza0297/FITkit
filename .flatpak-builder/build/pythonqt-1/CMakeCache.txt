@@ -200,24 +200,6 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Enable to build RPM source packages
-CPACK_SOURCE_RPM:BOOL=OFF
-
-//Enable to build TBZ2 source packages
-CPACK_SOURCE_TBZ2:BOOL=ON
-
-//Enable to build TGZ source packages
-CPACK_SOURCE_TGZ:BOOL=ON
-
-//Enable to build TXZ source packages
-CPACK_SOURCE_TXZ:BOOL=ON
-
-//Enable to build TZ source packages
-CPACK_SOURCE_TZ:BOOL=ON
-
-//Enable to build ZIP source packages
-CPACK_SOURCE_ZIP:BOOL=OFF
-
 //Path to a file.
 PYTHON_INCLUDE_DIR:PATH=/usr/include/python3.7m
 
@@ -240,7 +222,7 @@ PythonQt_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libpython3.7m.so;g
 PythonQt_SOURCE_DIR:STATIC=/run/build/pythonqt
 
 //Make all Qt components available in python
-PythonQt_Wrap_QtAll:BOOL=ON
+PythonQt_Wrap_QtAll:BOOL=OFF
 
 //Make all of Qtcore available in python
 PythonQt_Wrap_Qtcore:BOOL=ON
@@ -270,7 +252,7 @@ PythonQt_Wrap_Qtwebkit:BOOL=ON
 PythonQt_Wrap_Qtxml:BOOL=ON
 
 //Make all of Qtxmlpatterns available in python
-PythonQt_Wrap_Qtxmlpatterns:BOOL=OFF
+PythonQt_Wrap_Qtxmlpatterns:BOOL=ON
 
 //Path to a library.
 QT_ARTHURPLUGIN_PLUGIN_DEBUG:FILEPATH=QT_ARTHURPLUGIN_PLUGIN_DEBUG-NOTFOUND
@@ -1028,18 +1010,6 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_RPM
-CPACK_SOURCE_RPM-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TBZ2
-CPACK_SOURCE_TBZ2-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TGZ
-CPACK_SOURCE_TGZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TXZ
-CPACK_SOURCE_TXZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_TZ
-CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CPACK_SOURCE_ZIP
-CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 //Details about finding PythonLibs
 FIND_PACKAGE_MESSAGE_DETAILS_PythonLibs:INTERNAL=[/usr/lib/x86_64-linux-gnu/libpython3.7m.so][/usr/include/python3.7m][v3.7.3()]
 //Details about finding Qt4

@@ -1,12 +1,14 @@
+#-----------------------------------------------------------------------------
+# NOTE: The CMake files have been contributed to PythonQt and have not been tested with the current
+# PythonQt version. They have not yet been updated to support Qt 5 and/or Python 3.
+#
+# If you are not a CMake expert, you should better use the provided qmake profiles.
+#-----------------------------------------------------------------------------
+
 cmake_minimum_required(VERSION 2.8)
 
 #-----------------------------------------------------------------------------
 project(PythonQt)
-set(MAJOR_VERSION 2)
-set(MINOR_VERSION 1)
-set(PATCH_VERSION 0)
-set(VERSION_STRING ${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION})
-
 #-----------------------------------------------------------------------------
 
 include(CTestUseLaunchers OPTIONAL)
@@ -21,11 +23,11 @@ add_definitions(-DPYTHONQT_USE_RELEASE_PYTHON_FALLBACK)
 #-----------------------------------------------------------------------------
 # Build options
 
-option(PythonQt_Wrap_QtAll "Make all Qt components available in python" ON)
+option(PythonQt_Wrap_QtAll "Make all Qt components available in python" OFF)
 
 set(qtlibs core gui network opengl sql svg uitools webkit xml xmlpatterns)
 foreach(qtlib ${qtlibs})
-  OPTION(PythonQt_Wrap_Qt${qtlib} "Make all of Qt${qtlib} available in python" OFF)
+  OPTION(PythonQt_Wrap_Qt${qtlib} "Make all of Qt${qtlib} available in python" ON)
 endforeach()
 
 # Force option if it applies
@@ -79,9 +81,6 @@ endif()
 # The variable "generated_cpp_suffix" allows to conditionnally compile the generated wrappers 
 # associated with the Qt version being used.
 set(generated_cpp_suffix "_${QT_VERSION_MAJOR}${QT_VERSION_MINOR}")
-if("${generated_cpp_suffix}" STREQUAL "_48")
-  set(generated_cpp_suffix "")
-endif()
 if("${generated_cpp_suffix}" STREQUAL "_46")
   set(generated_cpp_suffix "_47") # Also use 4.7 wrappers for 4.6.x version
 endif()
@@ -90,6 +89,7 @@ endif()
 # Sources
 
 set(sources
+    src/PythonQtBoolResult.cpp
     src/PythonQtClassInfo.cpp
     src/PythonQtClassWrapper.cpp
     src/PythonQtConversion.cpp
@@ -107,10 +107,11 @@ set(sources
     src/PythonQtStdIn.cpp
     src/PythonQtStdOut.cpp
     src/gui/PythonQtScriptingConsole.cpp
-
-    extensions/PythonQt_QtAll/PythonQt_QtAll_export.cpp
+    
+    extensions/PythonQt_QtAll/PythonQt_QtAll.cpp
     
     generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.cpp
+
 
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin0.cpp
     generated_cpp${generated_cpp_suffix}/com_trolltech_qt_core_builtin/com_trolltech_qt_core_builtin_init.cpp
@@ -122,6 +123,7 @@ set(sources
 # List headers.  This is list is used for the install command.
 
 set(headers
+    src/PythonQtBoolResult.h
     src/PythonQtClassInfo.h
     src/PythonQtClassWrapper.h
     src/PythonQtConversion.h
@@ -142,10 +144,11 @@ set(headers
     src/PythonQtStdIn.h
     src/PythonQtStdOut.h
     src/PythonQtSystem.h
+    src/PythonQtUtils.h
     src/PythonQtVariants.h
     src/PythonQtPythonInclude.h
-    src/gui/PythonQtScriptingConsole.h
     generated_cpp${generated_cpp_suffix}/PythonQt_QtBindings.h
+
     extensions/PythonQt_QtAll/PythonQt_QtAll.h
 )
 
@@ -219,7 +222,6 @@ add_library(PythonQt SHARED
             ${gen_qrc_sources}
   )
 set_target_properties(PythonQt PROPERTIES DEFINE_SYMBOL PYTHONQT_EXPORTS)
-#set_target_properties(PythonQt PROPERTIES DEFINE_SYMBOL PYTHONQT_QTALL_EXPORTS)
 
 #
 # That should solve linkage error on Mac when the project is used in a superbuild setup
@@ -237,47 +239,8 @@ target_link_libraries(PythonQt
 #-----------------------------------------------------------------------------
 # Install library (on windows, put the dll in 'bin' and the archive in 'lib')
 
-# OS specific
-if(${UNIX})
-   add_definitions(-DUNIX)
-   set(LIBDIR lib)
-   set(CMOD_DIR ${LIBDIR}/${PROJECT_NAME})
-endif(${UNIX})
-
-if(${WIN32})
-   add_definitions(-DWIN32)
-   set(LIBDIR bin)
-   set(CMOD_DIR ${LIBDIR}/${PROJECT_NAME})
-endif(${WIN32})
-
 install(TARGETS PythonQt
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 install(FILES ${headers} DESTINATION include/PythonQt)
-
-# Module file
-string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LC)
-configure_file("${CMAKE_SOURCE_DIR}/Module.cmake.in"
-               "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME_LC}-config.cmake"
-               IMMEDIATE @ONLY)
-# Module install
-install( FILES ${CMAKE_BINARY_DIR}/${PROJECT_NAME_LC}-config.cmake
-         DESTINATION ${CMOD_DIR}
-         COMPONENT sharedlibs
-       )
-
-# Uninstall
-configure_file(
-   "${CMAKE_SOURCE_DIR}/UninstallTarget.cmake.in"
-   "${CMAKE_CURRENT_BINARY_DIR}/UninstallTarget.cmake"
-   IMMEDIATE @ONLY
-   )
-
-add_custom_target(
-   uninstall
-   "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/UninstallTarget.cmake"
-   )
-
-# Packages
-include(PythonQt.cpack)

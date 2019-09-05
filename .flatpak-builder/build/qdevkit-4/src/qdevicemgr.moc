@@ -1,0 +1,163 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'qdevicemgr.h'
+**
+** Created by: The Qt Meta Object Compiler version 63 (Qt 4.8.7)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "qdevicemgr.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'qdevicemgr.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.7. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_QDeviceMgr[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+      14,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       4,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      21,   12,   11,   11, 0x05,
+      35,   12,   11,   11, 0x05,
+      49,   12,   11,   11, 0x05,
+      60,   12,   11,   11, 0x05,
+
+ // slots: signature, parameters, type, tag, flags
+      70,   11,   11,   11, 0x0a,
+      78,   11,   11,   11, 0x0a,
+      85,   11,   11,   11, 0x0a,
+      94,   12,   11,   11, 0x09,
+     111,   12,   11,   11, 0x09,
+
+ // methods: signature, parameters, type, tag, flags
+     142,   12,  127,   11, 0x02,
+     154,   11,  127,   11, 0x22,
+     163,   12,  127,   11, 0x02,
+     176,   11,  127,   11, 0x22,
+     193,  186,   11,   11, 0x02,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_QDeviceMgr[] = {
+    "QDeviceMgr\0\0deviceId\0acquired(int)\0"
+    "released(int)\0found(int)\0lost(int)\0"
+    "start()\0stop()\0reload()\0notifyFound(int)\0"
+    "notifyLost(int)\0QtAPI::Device*\0"
+    "device(int)\0device()\0acquire(int)\0"
+    "acquire()\0device\0release(QtAPI::Device*)\0"
+};
+
+void QDeviceMgr::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        QDeviceMgr *_t = static_cast<QDeviceMgr *>(_o);
+        switch (_id) {
+        case 0: _t->acquired((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 1: _t->released((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->found((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->lost((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->start(); break;
+        case 5: _t->stop(); break;
+        case 6: _t->reload(); break;
+        case 7: _t->notifyFound((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->notifyLost((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 9: { QtAPI::Device* _r = _t->device((*reinterpret_cast< int(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QtAPI::Device**>(_a[0]) = _r; }  break;
+        case 10: { QtAPI::Device* _r = _t->device();
+            if (_a[0]) *reinterpret_cast< QtAPI::Device**>(_a[0]) = _r; }  break;
+        case 11: { QtAPI::Device* _r = _t->acquire((*reinterpret_cast< int(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< QtAPI::Device**>(_a[0]) = _r; }  break;
+        case 12: { QtAPI::Device* _r = _t->acquire();
+            if (_a[0]) *reinterpret_cast< QtAPI::Device**>(_a[0]) = _r; }  break;
+        case 13: _t->release((*reinterpret_cast< QtAPI::Device*(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData QDeviceMgr::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject QDeviceMgr::staticMetaObject = {
+    { &QThread::staticMetaObject, qt_meta_stringdata_QDeviceMgr,
+      qt_meta_data_QDeviceMgr, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &QDeviceMgr::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *QDeviceMgr::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *QDeviceMgr::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_QDeviceMgr))
+        return static_cast<void*>(const_cast< QDeviceMgr*>(this));
+    if (!strcmp(_clname, "DeviceMgr"))
+        return static_cast< DeviceMgr*>(const_cast< QDeviceMgr*>(this));
+    if (!strcmp(_clname, "Component"))
+        return static_cast< Component*>(const_cast< QDeviceMgr*>(this));
+    return QThread::qt_metacast(_clname);
+}
+
+int QDeviceMgr::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QThread::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 14)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 14;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void QDeviceMgr::acquired(int _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void QDeviceMgr::released(int _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void QDeviceMgr::found(int _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
+void QDeviceMgr::lost(int _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+QT_END_MOC_NAMESPACE

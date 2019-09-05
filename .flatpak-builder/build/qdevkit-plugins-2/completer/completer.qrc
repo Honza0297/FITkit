@@ -1,0 +1,5 @@
+<RCC>
+   <qresource prefix="icons" >
+      <file>completer.png</file>
+   </qresource>
+</RCC>

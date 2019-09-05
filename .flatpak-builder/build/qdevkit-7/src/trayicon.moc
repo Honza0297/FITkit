@@ -1,0 +1,106 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'trayicon.h'
+**
+** Created by: The Qt Meta Object Compiler version 63 (Qt 4.8.7)
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include "trayicon.h"
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'trayicon.h' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 63
+#error "This file was generated using the moc from 4.8.7. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+static const uint qt_meta_data_TrayIcon[] = {
+
+ // content:
+       6,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       5,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       0,       // signalCount
+
+ // slots: signature, parameters, type, tag, flags
+      17,   10,    9,    9, 0x0a,
+      78,   60,    9,    9, 0x0a,
+     121,  111,    9,    9, 0x2a,
+     154,  150,    9,    9, 0x0a,
+     174,    9,    9,    9, 0x0a,
+
+       0        // eod
+};
+
+static const char qt_meta_stringdata_TrayIcon[] = {
+    "TrayIcon\0\0reason\0"
+    "clicked(QSystemTrayIcon::ActivationReason)\0"
+    "title,msg,timeout\0showMessage(QString,QString,int)\0"
+    "title,msg\0showMessage(QString,QString)\0"
+    "msg\0setToolTip(QString)\0reloadSettings()\0"
+};
+
+void TrayIcon::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        TrayIcon *_t = static_cast<TrayIcon *>(_o);
+        switch (_id) {
+        case 0: _t->clicked((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
+        case 1: _t->showMessage((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3]))); break;
+        case 2: _t->showMessage((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 3: _t->setToolTip((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 4: _t->reloadSettings(); break;
+        default: ;
+        }
+    }
+}
+
+const QMetaObjectExtraData TrayIcon::staticMetaObjectExtraData = {
+    0,  qt_static_metacall 
+};
+
+const QMetaObject TrayIcon::staticMetaObject = {
+    { &QSystemTrayIcon::staticMetaObject, qt_meta_stringdata_TrayIcon,
+      qt_meta_data_TrayIcon, &staticMetaObjectExtraData }
+};
+
+#ifdef Q_NO_DATA_RELOCATION
+const QMetaObject &TrayIcon::getStaticMetaObject() { return staticMetaObject; }
+#endif //Q_NO_DATA_RELOCATION
+
+const QMetaObject *TrayIcon::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->metaObject : &staticMetaObject;
+}
+
+void *TrayIcon::qt_metacast(const char *_clname)
+{
+    if (!_clname) return 0;
+    if (!strcmp(_clname, qt_meta_stringdata_TrayIcon))
+        return static_cast<void*>(const_cast< TrayIcon*>(this));
+    if (!strcmp(_clname, "Component"))
+        return static_cast< Component*>(const_cast< TrayIcon*>(this));
+    return QSystemTrayIcon::qt_metacast(_clname);
+}
+
+int TrayIcon::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QSystemTrayIcon::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    }
+    return _id;
+}
+QT_END_MOC_NAMESPACE

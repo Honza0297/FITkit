@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=QDevKit
+GenericName=FITKit toolkit
+Comment=FITKit development toolkit based on Qt4.
+Comment[cs]=Toolkit pro práci s FITKitem založený na Qt4.
+Exec=qdevkit
+Icon=fitkit
+Type=Application
+Terminal=false
+X-KDE-StartupNotify=false
+X-KDE-BrowserView-Args=DetailedList
+Categories=Qt;KDE;Development;Utilities;

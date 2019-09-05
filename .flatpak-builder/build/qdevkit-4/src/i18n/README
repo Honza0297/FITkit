@@ -1,0 +1,13 @@
+How to update/create translation
+-------------------------
+Update translation strings via lupdate (lupdate-qt4).
+If you're adding new language, add it into CMakeLists.txt
+
+ # lupdate .. -ts qdevkit_${lang}.ts # substitute lang for "cs", "sk" etc.
+
+Add translation strings
+-----------------------
+Use Qt Linguist for editing .ts files.
+
+ # linguist qdevkit_${lang}.ts
+

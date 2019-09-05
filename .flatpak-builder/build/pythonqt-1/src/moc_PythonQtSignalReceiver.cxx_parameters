@@ -23,6 +23,7 @@
 -DPYTHONQT_WRAP_Qtuitools
 -DPYTHONQT_WRAP_Qtwebkit
 -DPYTHONQT_WRAP_Qtxml
+-DPYTHONQT_WRAP_Qtxmlpatterns
 -o
 /run/build/pythonqt/src/moc_PythonQtSignalReceiver.cxx
 /run/build/pythonqt/src/PythonQtSignalReceiver.h

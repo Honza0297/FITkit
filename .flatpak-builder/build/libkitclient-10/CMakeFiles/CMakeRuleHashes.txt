@@ -1,8 +1,0 @@
-# Hashes of file build rules.
-89b682a8720d08e28f01515e7e5fcefc CMakeFiles/uninstall
-52fd5567f384655e79bc187a1fd14c88 src/ipdiscovery.moc
-d5bdc92563ab674248ee78641ffead20 src/ipservice.moc
-01345ce1c678d69e0212b9f5c240d06b src/qtapi_device.moc
-6f8d4c2f81c18cbcac9306bcefd9f457 src/qtapi_iochannel.moc
-5b899828bc9a2c789a97445a0e9215c1 swig/CMakeFiles/_fitkit.dir/fitkitPYTHON.stamp
-2e16d132dd7f26d7481bad4a53a01a4d swig/CMakeFiles/fitkit_swig_compilation
