@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+    <id>org.FITVUT.qdevkit</id>
+    <launchable type="desktop-id">org.FITVUT.qdevkit.desktop</launchable>
+    <!-- Add licences -->
+    <name>Qdevkit</name>
+    <summary>Qdevkit for FITKit</summary>
+    <description>
+        <p>QDevKit is a multiplatform terminal application that has been designed to make the work with FITkit simple and pleasant. QDevkit removes the disadvantages of common terminal programs - their mutual incompatibility, inability to work with the FITkit directly through USB (the emulated serial port has to be used), the necessity of setting the number of parameters and the lack of uniform cross-platform solution.</p>
+        <p>The package also contains the GNU make utility, which is used for the compilation of the projects, rm utility and SVN client, which simplifies the synchronization of local sources with a central repository.</p>
+    </description>
+    <!-- releases -->
+    <!-- screenshots -->
+    <categories>
+        <category>Development</category>
+        <category>Education</category>
+    </categories>
+    <url type="homepage">https://github.com/Honza0297/FITkit</url>
+    <url type="bugtracker">https://github.com/Honza0297/FITkit/issues</url>
+    <update_contact>jaberan_AT_redhat.com</update_contact>
+    <provides>
+        <binary>qdevkit</binary>
+    </provides>
+</component>
