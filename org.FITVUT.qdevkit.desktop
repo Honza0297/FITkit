@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=QDevKit
+GenericName=QDevKit
+Comment=QDevKit is a multiplatform terminal application that has been designed to make the work with FITkit simple and pleasant.
+Exec=qdevkit
+Terminal=false
+Icon=org.FITVUT.qdevkit
+Type=Application
+Categories=Development;Education

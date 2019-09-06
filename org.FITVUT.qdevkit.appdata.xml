@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop">
     <id>org.FITVUT.qdevkit</id>
-    <!-- <launchable type="desktop-id">org.FITVUT.qdevkit.desktop</launchable> -->
+    <launchable type="desktop-id">org.FITVUT.qdevkit.desktop</launchable>
     <!-- Add licences -->
     <name>Qdevkit</name>
     <summary>Qdevkit for FITKit</summary>
