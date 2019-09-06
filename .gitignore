@@ -1,1 +1,3 @@
 *.tar.*
+.flatpak-builder
+output

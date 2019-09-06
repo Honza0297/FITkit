@@ -1,0 +1,7 @@
+this is very experimental stuff. so, use it at your own risk
+
+
+Implemented:
+	float sqrt(float arg);
+
+

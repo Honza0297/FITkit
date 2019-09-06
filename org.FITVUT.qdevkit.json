@@ -4,6 +4,18 @@
     "runtime-version": "18.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "qdevkit",
+    "finish-args": [
+    "--share=ipc",
+    "--socket=x11",
+    "--socket=wayland",
+    "--share=network",
+    "--filesystem=host:create",
+    "--device=all",
+    "--env=LD_LIBRARY_PATH=/app/lib64:$LD_LIBRARY_PATH",
+    "--socket=pulseaudio",
+    "--socket=session-bus",
+    "--socket=system-bus"
+],
     "modules": [    
        {
             "name": "libssh",
@@ -102,6 +114,84 @@
                 }
             ]
         },
+       {
+            "name": "svn",
+            "modules": [
+                {
+                    "name": "apr",
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://ftp.wayne.edu/apache//apr/apr-1.6.5.tar.bz2",
+                            "sha256": "a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105"
+                        }
+                    ]
+                },
+                {
+                    "name": "apr-util",
+                    "config-opts" : [
+                        "--with-apr=/app"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net//apr/apr-util-1.6.1.tar.bz2",
+                            "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
+                        }
+                    ]
+                },
+                {
+                    "name": "utf8proc",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "make prefix=/app",
+                        "make prefix=/app install"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.2.0.tar.gz",
+                            "sha256": "3f8fd1dbdb057ee5ba584a539d5cd1b3952141c0338557cb0bdf8cb9cfed5dbf"
+                        }
+                    ]
+                },
+                {
+                    "name" : "serf",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "tar -xf scons-local-2.3.0.tar.gz",
+                        "python2 scons.py APR=/app/bin/apr-1-config APU=/app/bin/apu-1-config PREFIX=/app",
+                        "python2 scons.py install"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "file",
+                            "url": "http://prdownloads.sourceforge.net/scons/scons-local-2.3.0.tar.gz",
+                            "sha256": "24c83b6067ce2b994a08d613add791633982e6198151ec8508829ae26293bff0"
+                        },
+                        {
+                            "type": "archive",
+                            "url": "https://www.apache.org/dist/serf/serf-1.3.9.tar.bz2",
+                            "sha256": "549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc"
+                        }
+                    ]
+                },
+                {
+                    "name": "subversion",
+                    "config-opts" : [
+                        "--with-lz4=internal",
+                        "--with-serf"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.ionfish.org/subversion/subversion-1.10.4.tar.bz2",
+                            "sha512": "c44a4a4a9533cd4f4cb6ddbc3ce98585a96da6c8e75497d087034b52f899797bb0972dfc0e79db99e81149e59e7fa765398c6ad35eba64f11f4ae9c3b3537434"
+                        }
+                    ]
+                }
+            ]
+},
         {
             "name": "qdevkit",
             "buildsystem": "cmake",
@@ -122,6 +212,38 @@
                     "path": "qdevkit-plugins-current.tar.gz"
                 }
             ]
+        },
+       {
+                "name": "binutils",
+                "buildsystem": "simple",
+                "build-commands": [
+                       "./configure --target=msp430 --prefix=/app/mspgcc --disable-nls --disable-shared --enable-debug --disable-threads --with-gcc --with-gnu-as --with-gnu-ld --with-stabs --disable-multilib --disable-werror",
+                       "make",
+                       "make install"
+                    ],
+                "sources": [
+                    {
+                        "type": "archive",
+                        "path": "binutils-2.18.tar.xz"
+                    }
+                ]
+        },  
+        {
+                "name": "gcc",
+                "buildsystem": "simple",
+                "build-commands": [
+                       "export PATH=/app/mspgcc/bin:$PATH",
+                       "./configure --target=msp430 --prefix=/app/mspgcc --disable-multilib --disable-libc --disable-libssp --disable-intl --disable-libiberty --with-gcc --with-gnu-ld --with-gnu-as --with-stabs --disable-shared --disable-threads --disable-win32-registry --disable-nls --enable-languages=c,c++",
+                       "make",
+                       "make install"
+                    ],
+                "sources": [
+                    {
+                        "type": "archive",
+                        "path": "gcc-3.2.3.tar.xz"
+                    }
+                ]
         }
+
     ]
 }

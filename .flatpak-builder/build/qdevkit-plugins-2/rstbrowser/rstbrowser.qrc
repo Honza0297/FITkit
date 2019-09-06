@@ -1,5 +1,0 @@
-<RCC>
-   <qresource prefix="scripts" >
-      <file>rstbrowser.py</file>
-   </qresource>
-</RCC>
