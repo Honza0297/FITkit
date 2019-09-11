@@ -17,18 +17,22 @@ include(CTestUseLaunchers OPTIONAL)
 # Python libraries
 
 find_package(PythonLibs REQUIRED)
+set(PYTHON_LIBRARY /app/lib/libpython2.7.so)
+set(PYTHON_INCLUDE_DIR /app/include/python2.7)
 include_directories("${PYTHON_INCLUDE_DIR}")
 add_definitions(-DPYTHONQT_USE_RELEASE_PYTHON_FALLBACK)
 
 #-----------------------------------------------------------------------------
 # Build options
 
-option(PythonQt_Wrap_QtAll "Make all Qt components available in python" OFF)
-
-set(qtlibs core gui network opengl sql svg uitools webkit xml xmlpatterns)
+option(PythonQt_Wrap_QtAll "Make all Qt components available in python" ON)
+set(qtlibs gui)
 foreach(qtlib ${qtlibs})
   OPTION(PythonQt_Wrap_Qt${qtlib} "Make all of Qt${qtlib} available in python" OFF)
 endforeach()
+
+option(PythonQt_Wrap_Qtcore "Make Core Qt components available in python" ON)
+option(PythonQt_Wrap_Qtgui "Make Gui Qt components available in python" ON)
 
 # Force option if it applies
 if(PythonQt_Wrap_QtAll)
@@ -64,7 +68,7 @@ if(QT4_FOUND)
   endif()
   
   # Enable required qt module
-  foreach(qtlib network opengl sql svg uitools webkit xml xmlpatterns)
+  foreach(qtlib gui )
     string(TOUPPER ${qtlib} qtlib_uppercase)
     if (NOT ${QT_QT${qtlib_uppercase}_FOUND})
       message(FATAL_ERROR "QT_QT${${qtlib_uppercase} *not* FOUND - Try to disable PythonQt_Wrap_Qt${qtlib}")
@@ -168,7 +172,7 @@ set(moc_sources
 
 #-----------------------------------------------------------------------------
 # Add extra sources
-foreach(qtlib core gui network opengl sql svg uitools webkit xml xmlpatterns)
+foreach(qtlib gui)
   
   if (${PythonQt_Wrap_Qt${qtlib}})
     

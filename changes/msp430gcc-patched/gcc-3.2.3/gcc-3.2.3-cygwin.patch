@@ -1,0 +1,57 @@
+--- gcc-3.2.3.orig/ggc/gcc-page.c       2003-05-06 15:37:04 +0800
++++ gcc-3.2.3/gcc/ggc-page.c       2003-05-06 15:37:54 +0800
+@@ -495,28 +495,35 @@
+     }
+   printf ("NULL\n");
+   fflush (stdout);
+ }
+ 
++static char *last_allocated_page = NULL;
++
+ #ifdef USING_MMAP
+ /* Allocate SIZE bytes of anonymous memory, preferably near PREF,
+    (if non-null).  The ifdef structure here is intended to cause a
+    compile error unless exactly one of the HAVE_* is defined.  */
+ 
+ static inline char *
+ alloc_anon (pref, size)
+      char *pref ATTRIBUTE_UNUSED;
+      size_t size;
+ {
++  char *page;
++
++  do {
+ #ifdef HAVE_MMAP_ANON
+-  char *page = (char *) mmap (pref, size, PROT_READ | PROT_WRITE,
+-			      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++  page = (char *) mmap (pref, size, PROT_READ | PROT_WRITE,
++		        MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+ #endif
+ #ifdef HAVE_MMAP_DEV_ZERO
+-  char *page = (char *) mmap (pref, size, PROT_READ | PROT_WRITE,
+-			      MAP_PRIVATE, G.dev_zero_fd, 0);
++  page = (char *) mmap (pref, size, PROT_READ | PROT_WRITE,
++	 	        MAP_PRIVATE, G.dev_zero_fd, 0);
+ #endif
++  } while (page == last_allocated_page);
++  last_allocated_page = page;
+ 
+   if (page == (char *) MAP_FAILED)
+     {
+       perror ("virtual memory exhausted");
+       exit (FATAL_EXIT_CODE);
+--- gcc-3.2.3.orig/gcc/fixinc/gnu-regex.c	2003-05-06 15:37:04 +0800
++++ gcc-3.2.3/gcc/fixinc/gnu-regex.c	2003-05-06 15:37:42 +0800
+@@ -5718,11 +5718,11 @@
+   if (errbuf_size != 0)
+     {
+       if (msg_size > errbuf_size)
+         {
+ #if defined HAVE_MEMPCPY || defined _LIBC
+-	  *((char *) __mempcpy (errbuf, msg, errbuf_size - 1)) = '\0';
++	  *((char *) mempcpy (errbuf, msg, errbuf_size - 1)) = '\0';
+ #else
+           memcpy (errbuf, msg, errbuf_size - 1);
+           errbuf[errbuf_size - 1] = 0;
+ #endif
+         }

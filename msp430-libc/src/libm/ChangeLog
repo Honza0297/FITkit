@@ -1,0 +1,33 @@
+2003-08-07 Chris Takahashi <ctakahashi (_at_) users.sourceforge.net>
+	Modified files:
+        subsf.c
+
+  * subsf.c: Optimized floating-point subtract function.  Zero check handled
+             by __addsf3().  Tested using simu with the following cases:
+         waldorf.csc.calpoly.edu/~dstearns/SIM/Examples/FloatAdder/explain.html
+		 
+
+2003-08-07 Dmitry Diky <diwil@mail.ru>
+  * floatdisf.c: Fix function typo (prepend two leading '_')
+  
+2003-08-06 4:45pm PST Chris Takahashi <ctakahashi (_at_) users.sourceforge.net>
+	Modified files:
+		divsf.c
+
+	Comment:
+		Did quick optimization on floating-point division; sped up sign 
+		extraction.
+
+2003-08-06 Chris Takahashi <ctakahashi (_at_) users.sourceforge.net>
+	Modified files:
+		eqsf.c
+		gesf.c
+		gtsf.c
+		lesf.c
+		ltsf.c
+		nesf.c
+		cmpsf.c
+
+	Comment:
+		Fixed floating-point comparison.  Preformed rudimentary functional
+		tests to confirm correctness.

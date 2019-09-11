@@ -1,0 +1,29 @@
+The "as if" rule -- which is stated in 5.1.2.3 [#3] in C99 -- is explicitly
+defined to NOT allow optimizing away accesses to volatile objects.
+
+ |        5.1.2.3  Program execution
+ ...
+ |        [#2]  Accessing  a  volatile  object,  modifying  an object,
+ |        modifying a file, or calling a function  that  does  any  of
+ |        those  operations are all side effects
+ ...
+ |        [#3] In the abstract machine, all expressions are  evaluated
+ |        as  specified  by  the  semantics.  An actual implementation
+ |        need not evaluate part of an expression  if  it  can  deduce
+ |        that  its  value is not used and that no needed side effects
+ |        are produced (including any caused by calling a function  or
+ |        accessing a volatile object).
+ ...
+ |        [#5] The least requirements on a  conforming  implementation
+ |        are:
+ | 
+ |          -- At  sequence points, volatile objects are stable in the
+ |             sense  that  previous   accesses   are   complete   and
+ |             subsequent accesses have not yet occurred.
+
+-- 
+
+This rule is worked around, so in simple instructions variables of 8 and 16
+bits long performs as non-volatile ones. This feature can be disabled with
+'-mno-volatile-workaround' gcc flag.
+

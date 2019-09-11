@@ -1,0 +1,113 @@
+
+About the mspgcc device-specific headers
+========================================
+
+M. P. Ashton <data@ieee.org>, 18 March 2002
+
+The device-specific headers, which are located in msp430/include,
+define various symbols for use while writing low-level software for
+the MSP430 series.  Bit names, register names, and other such things
+are defined by these files, so that they can be used just as they are
+in the data-sheets (hopefully).
+
+The headers originally included with mspgcc were taken from the IAR
+development package (the headers were provided by TI, not IAR).
+There was one header for each family of devices in the MSP430 family,
+more or less.  Unfortunately, these files were large and difficult to
+maintain, since they each contained all of the definitions pertinent
+to a given device family.  This is not necessary, since the MSP430
+family shares modules between devices, and the implementations of the
+modules are, in most cases, exactly the same.
+
+The new headers are an attempt to improve on this.  The top-level
+headers, such as msp430x14x.h, msp430x11x.h, etc. are retained, and
+should operate exactly as the IAR headers do; but where these files
+share a number of symbols, because the devices have common modules,
+the symbols have been split into a separate header file, and that file
+included.
+
+For example, for each MSP430 family with the ADC12 analog-to-digital
+converter module, each of the IAR headers duplicates the register
+definitions for each file.  The new headers instead #include a
+separate file, adc12.h, since the ADC12 module has exactly the same
+register definitions for all MSP430 devices which incorporate it.
+
+In the author's opinion, this structure is far easier both to maintain
+and to work with; errors corrected in one module's register set are
+propagated to all of the devices which include it, and one need not
+search through a large header to find definitions for a particular
+module.
+
+Organisation
+------------
+
+For the most part, each module header file is simply included directly
+into the header for a device which includes that module.  This can be
+done in most cases because modules in the MSP430 line, as of this
+writing, are nearly always mapped to the same address.
+
+I have found only one exception to this: in the x41x family, the LCD
+module begins at address 0x90; other MSP430s with this module map it
+to 0x30.  The LCD module therefore is defined so that all of its
+registers are offsets from LCD_BASE, which is defined in the family
+headers.  It is entirely possible that future devices will remap other
+modules; the affected headers will be modified as necessary.
+
+Three of the modules are implemented only partially in some devices;
+for these, #defines are used to control which registers are imported
+from the module files.  These "switches" are listed at the beginning
+of each module file which has them.  The GPIO module has seven
+such switches, one for each port (0-6).  All of the switches are named
+__msp430_have_FUNCTION, where FUNCTION is the name of a particular
+function from a module.
+
+The greatest differences between the various families are in the
+special function registers and interrupt vectors.  These vary widely
+from device to device, and I could not think of a clean way to abstract
+them from the family headers.  Therefore, each device family header
+has the definitions for the SFRs and interrupt vectors included in the
+file; the module files do not define interrupt vectors or SFRs.
+
+Notes
+-----
+
+<msp430/common.h> must be included in each file.  It is included after
+all the other headers, on a line by itself, but before the SFRs and
+interrupt vectors.
+
+Switches are listed by themselves following the <msp430/iomacros.h>
+inclusion.
+
+GPIO is included in every MSP430 device.  However, the GPIO gets its
+own header, instead of being included in "common", because it is
+possible that future MSP430s will implement GPIO differently.
+
+When converting the old headers to the new format, I checked each one
+carefully to see that I wasn't messing anything up.  However, it is
+possible - nay, probable - that I have made a mistake somewhere, so if
+registers aren't defined or are behaving oddly, check them.  I will
+fix all reported problems as quickly as possible.  Eventually the
+new headers will stabilise and will not be a source of concern.
+
+
+Bit-field access to ports
+-------------------------
+
+File <msp430/iostructures.h> contains defenitions for port0 .. port6.
+This file being included automatically if used includes io.h, msp430xXXX.h 
+or msp430/gpio.h
+Each port declared as an assembler alias to the structure containing
+port's registers defenition.
+Each port register described as a union of an unsigned 8-bit register 
+'reg_p' and bit-field 'pins' __p0 .. __p7.
+So, user can write port0.out.__pin.__p0 = 1;
+Also __pin.__pX defined as pinX => port0.out.__pin.__p0 is equivalent to
+port0.out.pin0
+Please note, that port register declared as volatile. Any changes to this 
+register value will take in-place: gcc will not combile several insn into one.
+For example, for sequence:
+  port0.out.pin0 = 1;
+  port0.out.pin1 = 1;
+two separate asm insns will be issued.
+
+

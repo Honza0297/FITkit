@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/app/bin/python
 # -*- coding: utf-8 -*-
 # vim: set ts=4 et enc=utf-8:
 # Serial FITKIT Bootstrap Loader software
@@ -24,7 +24,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 '''
-from PythonQt.QtGui import *
+from PythonQt import *
+
 import traceback
 import sys
 import os
@@ -93,7 +94,7 @@ class DevFlash:
         self.stbar = None
 
     def log2(self, text, prefix="BSL: "):
-        if (text <> None): 
+        if (text != None): 
             self.stbar.showMessage(prefix+text,5000)
             self.messages += text
             if (not text.endswith("\n")):
@@ -101,19 +102,19 @@ class DevFlash:
         app.refreshApplication()
 
     def log(self, text, status=None):
-        if (text <> None) and (self.slab <> None):
+        if (text != None) and (self.slab != None):
             self.slab.text = text
             self.messages += text
             if (not text.endswith("\n")):
                 self.messages += "\n"
 
-        if (status <> None) and (self.sbar <> None):
+        if (status != None) and (self.sbar != None):
             self.sbar.setValue(status)
 
         app.refreshApplication()
 
     def destroyWindow(self):
-        if (self.win <> None):
+        if (self.win != None):
             self.win.close()
             del self.win
 
@@ -155,17 +156,17 @@ class DevFlash:
 
         self.messages = ""
         if (tries == 3):
-            self.createWindow()
+            #self.createWindow()
     
-            self.log("Flashing device %s" % str(self.device))
-            self.log("BinFile: %s" % filename_bin)
-            self.log("HexFile: %s" % filename_hex)
-            self.log("Forcing: %s" % force)
+            print("Flashing device %s" % str(self.device))
+            print("BinFile: %s" % filename_bin)
+            print("HexFile: %s" % filename_hex)
+            print("Forcing: %s" % force)
 
         channel = self.device.channel('b')
         ret = channel.open()
-        if (ret < 0):
-            raise Exception(tr("Can't open FTDI channel B. FITkit is probably used in another application.") + "[E"+str(ret)+"]")
+        if (ret < 1):
+            raise Exception(tr("Can't open FTDI channel B. FITkit is probably used in another application.") + "[Error "+str(ret)+"]")
 
         channel.flush()
         channel.close() 
@@ -202,7 +203,7 @@ class DevFlash:
                 bslobj.txPasswd(passwd)
                 bslobj.passwd = passwd
                 return True
-            except bsl.BSLException, msg:
+            except bsl.BSLException as msg:
                 if (str(msg) == bsl.LowLevel.ERR_RX_NAK):
                     return False
                 else:
@@ -253,28 +254,22 @@ class DevFlash:
 def flash(app_name, filename_bin, filename_hex, filename2_hex, force = False):
     global DEVICE
     device = DEVICE
-    #print DEVICE, app_name, filename_bin, filename_hex, force
+    print("LOG flash:", DEVICE, app_name, filename_bin, filename_hex, force)
     sys.path.append(plugin.path()) 
 
     fkflash = DevFlash(device, app_name=app_name)
 
     def exceptmsg(text):
-        m = QMessageBox(mainWindow)
-        m.setWindowTitle(tr("Error"))
-        m.setWindowIcon(QIcon(":/icons/48x48/plugin.png"))
-        m.setText(u"<b>" + tr("Exception occurs") + "</b><br><br>" + unicode(text).replace("\n","<br>"))
-        m.detailedText = fkflash.messages
-        m.detailedText += "\nTraceback:\n"
-        m.detailedText += "------------------------------------------------\n"
+        print("Error, exception occured!")
+        print(text)
+        print("Detailed:") 
+        print(fkflash.messages)
+        print("Traceback:")
+        print("------------------------------------------------")
 
         exceptionType, exceptionValue, exceptionTraceback = sys.exc_info()
         for l in traceback.format_tb(exceptionTraceback):
-            m.detailedText += " * " + str(l).strip() + "\n"
-
-        m.setIcon(QMessageBox.Critical)
-        m.setStandardButtons(QMessageBox.Ok)
-        m.setModal(True)
-        m.show()
+            print(" * " + str(l).strip())
 
     def excepthook(type, text, traceback):
         exceptmsg(text)
@@ -285,6 +280,6 @@ def flash(app_name, filename_bin, filename_hex, filename2_hex, force = False):
             fkflash.flash(filename_bin, filename_hex, filename2_hex, force)
         finally:
             fkflash.destroyWindow()
-    except Exception, msg:
+    except Exception as msg:
         exceptmsg(msg)
         sys.excepthook = None

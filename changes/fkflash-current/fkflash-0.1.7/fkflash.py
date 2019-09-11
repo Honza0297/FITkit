@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/app/bin/python
 # -*- coding: utf-8 -*-
 # vim: set ts=4 et enc=utf-8:
 #
@@ -69,7 +69,7 @@ class Serial:
         #nesmi vyvolat vyjimku pri timeoutu,
         # timeout se vyuziva napr. pri opakovani dotazu
         res = self.channel.read(reqlen, timeout)
-        if (res != None) and (reqlen <> len(res)):
+        if (res != None) and (reqlen != len(res)):
             #print "readreq:",reqlen," readed:",len(res)
             raise Exception("Read error")
  
@@ -96,7 +96,7 @@ def info(text, nl=True):
     sys.stdout.flush()
 
 def log(text, status=None):
-    if (text <> None):
+    if (text != None):
         try:
 
             if not isinstance(text, unicode):
@@ -153,7 +153,7 @@ def flash(dev, fbin, fhex, fhex2, force = False):
             bslobj.txPasswd(passwd)
             bslobj.passwd = passwd
             return True
-        except bsl.BSLException, msg:
+        except bsl.BSLException as msg:
             if (str(msg) == bsl.LowLevel.ERR_RX_NAK):
                 return False
             else:
@@ -269,7 +269,7 @@ def main():
                 sys.exit(2)
 
             root = doc.documentElement
-            if (not root) or (root.tagName <> 'project'):
+            if (not root) or (root.tagName != 'project'):
                 sys.stderr.write("Unknown root element %s\n", doc.documentElement.tagName)
                 sys.exit(2)
 
@@ -320,11 +320,11 @@ def main():
     if (dev is None):
         raise Exception("Can't open device %d" % dev_id)
 
-    info("Device Info: VID: %04X  PID: %04X  SN: %s DESCR: %s" % (dev.vid(), dev.pid(), dev['b'].serial(), dev['b'].product()))
+    print("Device Info: VID: %04X  PID: %04X  SN: %s DESCR: %s" % (dev.vid(), dev.pid(), dev['b'].serial(), dev['b'].product()))
 
     try:
         flash(dev, filename_bin, filename_hex, filename2_hex, force)
-    except Exception, msg:
+    except Exception as msg:
         info("Exception: " + repr(msg))
 
     devices.release(dev)
@@ -343,7 +343,7 @@ if __name__ == '__main__':
         if DEBUG_LEVEL > 0: raise     #show full trace in debug mode
         sys.stderr.write("User abort.\n")   #short messy in user mode
         sys.exit(1)         #set errorlevel for script usage
-    except Exception, msg:  #every Exception is caught and displayed
+    except Exception as msg:  #every Exception is caught and displayed
         if DEBUG_LEVEL > 0: raise     #show full trace in debug mode
         sys.stderr.write("\nAn error occoured:\n%s\n" % msg) #short messy in user mode
         sys.exit(1)         #set errorlevel for script usage
