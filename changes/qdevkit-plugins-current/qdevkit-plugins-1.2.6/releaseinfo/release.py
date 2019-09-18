@@ -89,7 +89,7 @@ def getLMInfo():
 
         return ports
 
-    except Exception, msg:
+    except Exception as msg:
         mainWindow.showError(u"Release info",u"Nepodařilo se získat informace o seznamu portů pro licenci. Nastala chyba při zpracování informací.\n")
 
         return None
@@ -137,7 +137,7 @@ def getReleaseInfo(version):
                 releases[v0][v1][v2] = (date,flist,blist)
 
         return releases
-    except Exception, msg:
+    except Exception as msg:
         mainWindow.showError(u"Release info",u"Nepodařilo se získat informace o novější verzi. Nastala chyba při zpracování informací.\n")
         return {}
 

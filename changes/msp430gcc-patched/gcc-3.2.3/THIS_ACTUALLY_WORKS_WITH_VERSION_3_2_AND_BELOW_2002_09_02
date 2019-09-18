@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+this directory works with gcc-3.2.x (tested with 3.2.3)
+
+The mismatch between the numbering of gcc and this directory is an
+historical accident.
+-------------------------------------------------------------------

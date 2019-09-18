@@ -30,6 +30,7 @@
             ]
         },
         "shared-modules/qt4/qt4-4.8.7-minimal.json",
+        "shared-modules/python2.7/python-2.7.json",
         {
             "name": "fcmake",
             "buildsystem": "cmake",
@@ -106,7 +107,7 @@
         {
             "name": "pythonqt",
             "buildsystem": "cmake",
-            "config-opts": ["-DLIB_INSTALL_DIR:PATH=%{_libdir}"],
+            "config-opts": ["-DCMAKE_INSTALL_PREFIX=/app"],
             "sources": [
                 {
                     "type": "archive",
@@ -213,11 +214,14 @@
                 }
             ]
         },
-       {
+        {
+            "name": "msp430-gcc",
+            "modules": [
+                 {
                 "name": "binutils",
                 "buildsystem": "simple",
                 "build-commands": [
-                       "./configure --target=msp430 --prefix=/app/mspgcc --disable-nls --disable-shared --enable-debug --disable-threads --with-gcc --with-gnu-as --with-gnu-ld --with-stabs --disable-multilib --disable-werror",
+                       "./configure --target=msp430 --prefix=/app --disable-nls --disable-shared --enable-debug --disable-threads --with-gcc --with-gnu-as --with-gnu-ld --with-stabs --disable-multilib --disable-werror",
                        "make",
                        "make install"
                     ],
@@ -232,8 +236,8 @@
                 "name": "gcc",
                 "buildsystem": "simple",
                 "build-commands": [
-                       "export PATH=/app/mspgcc/bin:$PATH",
-                       "./configure --target=msp430 --prefix=/app/mspgcc --disable-multilib --disable-libc --disable-libssp --disable-intl --disable-libiberty --with-gcc --with-gnu-ld --with-gnu-as --with-stabs --disable-shared --disable-threads --disable-win32-registry --disable-nls --enable-languages=c,c++",
+                       "export PATH=/app/mspgcc:/app/mspgcc/bin:$PATH",
+                       "./configure --target=msp430 --prefix=/app --disable-multilib --disable-libc --disable-libssp --disable-intl --disable-libiberty --with-gcc --with-gnu-ld --with-gnu-as --with-stabs --disable-shared --disable-threads --disable-win32-registry --disable-nls --enable-languages=c,c++",
                        "make",
                        "make install"
                     ],
@@ -243,7 +247,31 @@
                         "path": "gcc-3.2.3.tar.xz"
                     }
                 ]
+        },
+         {
+                "name": "msp430-libc",
+                "buildsystem": "simple",
+                "build-commands": [
+                       "export PATH=/app/mspgcc:/app/mspgcc/bin:$PATH",
+                       "make -C src",
+                       "make -C src install"
+                    ],
+                "sources": [
+                    {
+                        "type": "archive",
+                        "path": "msp430-libc.tar.xz"
+                    }
+                ]
         }
 
+
+            ]
+
+
+        }
+      
+
+      
     ]
+
 }
