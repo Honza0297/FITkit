@@ -163,7 +163,7 @@ class DevFlash:
             print("HexFile: %s" % filename_hex)
             print("Forcing: %s" % force)
 
-        channel = self.device.channel('b')
+        channel = self.device.channelB()
         ret = channel.open()
         if (ret < 1):
             raise Exception(tr("Can't open FTDI channel B. FITkit is probably used in another application.") + "[Error "+str(ret)+"]")

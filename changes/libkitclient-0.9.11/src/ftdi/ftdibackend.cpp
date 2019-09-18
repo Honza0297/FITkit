@@ -33,7 +33,7 @@
 #ifdef __UNIX
 
 // Includes
-#include "ftdi.h"
+#include <ftdi.h>
 
 class FTDIBackend::Private
 {

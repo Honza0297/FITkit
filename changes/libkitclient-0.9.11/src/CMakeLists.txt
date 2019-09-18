@@ -49,6 +49,7 @@ if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
     set_target_properties(kitclient_static PROPERTIES COMPILE_FLAGS -fPIC)
 endif("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
 
+
 # Linking
 find_library(RT_LIBRARY NAMES rt)
 if (NOT RT_LIBRARY)
@@ -71,13 +72,13 @@ endif(${WIN32})
 if(${UNIX})
     target_link_libraries(
         kitclient
-        ${FTDI_LIBRARIES}
+        ${LIBFTDI1}
         ${QT_LIBRARIES}
         ${THREAD_LIBRARY}
         ${RT_LIBRARY})
     target_link_libraries(
         kitclient_static
-        ${FTDI_LIBRARIES}
+        ${LIBFTDI1}
         ${QT_LIBRARIES}
         ${THREAD_LIBRARY}
         ${RT_LIBRARY})

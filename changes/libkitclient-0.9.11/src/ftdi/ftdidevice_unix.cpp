@@ -20,12 +20,13 @@
  ***************************************************************************/
 
 #include "ftdi/ftdidevice.h"
-#include <ftdi.h>
+#include <ftdi.h>   
 #include <pthread.h>
 #include <cstring>
 #include <cstdio>
 #include <cerrno>
 #include <ctime>
+#include <unistd.h>
 
 #ifdef __MACH__
 #include <mach/clock.h>

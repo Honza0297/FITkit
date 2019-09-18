@@ -1,4 +1,4 @@
-# Contrib dir
+#Contrib dir
 set(CONTRIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/contrib)
 include_directories(${CONTRIB_DIR})
 
@@ -40,13 +40,13 @@ endif(${WIN32})
 # libftdi
 if(${UNIX})
     # Find library
-    find_library(FTDI_LIBRARIES NAMES ftdi)
-    if(NOT FTDI_LIBRARIES)
+    find_library(LIBFTDI1 NAMES ftdi ftdi1 libftdi libftdi1)
+    if(NOT LIBFTDI1)
         message(FATAL_ERROR "!! libftdi library or development headers not found")
-    endif(NOT FTDI_LIBRARIES)
-    set(FTDI_LIBNAME "ftdi")
-    mark_as_advanced(FTDI_LIBNAME)
-    mark_as_advanced(FTDI_LIBRARIES)
+    endif(NOT LIBFTDI1)
+    set(FTDI_LIBNAME "ftdi1")
+    mark_as_advanced(FTDI1_LIBNAME)
+    mark_as_advanced(LIBFTDI1)
 endif(${UNIX})
 
 # liburpc (branch snapshot)

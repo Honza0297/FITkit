@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 2.6)
 cmake_policy(SET CMP0003 NEW)
 cmake_policy(SET CMP0005 NEW)
 add_definitions(-Wall -D__VERSION="${VERSION_STRING}")
-
+set(CMAKE_VERBOSE_MAKEFILE ON)
 # Qt4
 find_package(Qt4 4.2)
 set(QT_DONT_USE_QTGUI 1)
@@ -29,7 +29,8 @@ include(${QT_USE_FILE})
 # Includes
 include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR})
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    /app/include/libftdi1) #?!?!:!?!?!?!?!?!?!? really? this is enough????
 
 # Debug build
 if(NOT CMAKE_BUILD_TYPE)
@@ -50,7 +51,7 @@ endif("${DBG}" STREQUAL 1)
 # Root directory fix
 if("${CPACK_ROOTFIX}" STREQUAL "yes")
     set(ROOT_DIR "../")
-    set(CPACK_PACKAGING_INSTALL_PREFIX "/usr")
+    set(CPACK_PACKAGING_INSTALL_PREFIX "/app")
 else("${CPACK_ROOTFIX}" STREQUAL "yes")
     set(ROOT_DIR "/")
 endif("${CPACK_ROOTFIX}" STREQUAL "yes")
@@ -60,7 +61,7 @@ message(STATUS "Root directory: ${ROOT_DIR}")
 if(${UNIX})
     message(STATUS "Implementation: libftdi (UNIX)")
     add_definitions(-D__UNIX)
-    set(LIBDIR lib)           
+    set(LIBDIR lib64)           
     set(CMOD_DIR ${LIBDIR}/${PROJECT_NAME})
 endif(${UNIX})
 

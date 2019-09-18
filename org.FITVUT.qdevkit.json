@@ -41,6 +41,18 @@
                 }
             ]
         },
+        
+                {
+            "name": "swig",
+            "config-opts": ["--without-boost", "--without-pcre"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz",
+                    "sha256": "06dc8816a225667ce1eee545af3caf87e1bbaa379c32838d4cea53152514348d"
+                }
+            ]
+        },
          {
             "name": "libusb",
             "config-opts": [ "--disable-static", "--disable-udev" ],
@@ -53,28 +65,27 @@
             "sources": [
                 {
                     "type": "archive",
-                    "path": "libusb-0.1.12.tar.gz"
+                    "path": "libusb-1.0.22.tar.bz2"
                 }
             ]
         },
-                {
-            "name": "swig",
-            "config-opts": ["--without-boost", "--without-pcre"],
+         {
+            "name": "libusb-compat",
+            "config-opts": [ "--disable-static" ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://prdownloads.sourceforge.net/swig/swig-3.0.7.tar.gz",
-                    "sha256": "06dc8816a225667ce1eee545af3caf87e1bbaa379c32838d4cea53152514348d"
+                    "path": "libusb-compat-0.1.5.tar.bz2"
                 }
             ]
         },
-        {
+         {
             "name": "libftdi",
             "buildsystem": "cmake",
             "sources": [
                 {
                     "type": "archive",
-                    "path": "libftdi-0.20.tar.gz"  
+                    "path": "libftdi-0.20.tar.gz"
                 }
             ]
         },

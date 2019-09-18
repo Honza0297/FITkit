@@ -52,6 +52,7 @@ get_filename_component(
 
 # Export libraries
 set(${@PROJECT_NAME@_u}_FTDI_LIBRARIES ${so_FTDI})  
+message(@PROJECT_NAME@_u}_FTDI_LIBRARIES "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk")
 set(${@PROJECT_NAME@_u}_LIBRARIES ${so_@PROJECT_NAME@})
 
 # Export include directories
